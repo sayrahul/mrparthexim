@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Globe,
@@ -28,10 +29,16 @@ interface CorridorRoute {
   distance: string;
   description: string;
   keyProducts: string[];
-  pathD: string;
+  // SVG coordinates on 1000x500 map canvas
   destX: number;
   destY: number;
+  curveControlX: number;
+  curveControlY: number;
 }
+
+// Origin: JNPT / Mumbai, India (672, 250) on a 1000x562 world map coordinate system
+const ORIGIN_X = 672;
+const ORIGIN_Y = 250;
 
 const corridors: CorridorRoute[] = [
   {
@@ -46,9 +53,10 @@ const corridors: CorridorRoute[] = [
     distance: '~1,050 Nautical Miles',
     description: 'Our primary confirmed international focus. Direct Arabian Sea container routes connecting Maharashtra agricultural and industrial clusters to Dubai’s premier trading gateway under the India-UAE CEPA framework.',
     keyProducts: ['Guntur Red Chilli', 'Pure Turmeric', 'Combed Cotton Textiles', 'Premium Cashews', 'Packaged FMCG'],
-    pathD: 'M 500 175 Q 360 200 280 135',
-    destX: 280,
-    destY: 135,
+    destX: 605,
+    destY: 226,
+    curveControlX: 640,
+    curveControlY: 245,
   },
   {
     id: 'saudi',
@@ -61,10 +69,11 @@ const corridors: CorridorRoute[] = [
     transitTime: '6 - 9 Days (Estimated)',
     distance: '~1,800 Nautical Miles',
     description: 'Future trade corridor targeting Saudi Arabia’s expanding food service, hospitality, and wholesale retail sectors for high-grade whole spices and grains.',
-    keyProducts: ['Whole Spices', 'Kabuli Chickpeas', 'Basmati & Non-Basmati Grains', 'Bed Linens'],
-    pathD: 'M 500 175 Q 350 205 200 150',
-    destX: 200,
-    destY: 150,
+    keyProducts: ['Whole Spices', 'Kabuli Chickpeas', 'Grains & Pulses', 'Bed Linens'],
+    destX: 568,
+    destY: 240,
+    curveControlX: 618,
+    curveControlY: 268,
   },
   {
     id: 'africa',
@@ -78,9 +87,10 @@ const corridors: CorridorRoute[] = [
     distance: '~2,400 Nautical Miles',
     description: 'Strategic future corridor utilizing direct southwestern Indian Ocean sea lanes for consumer packaged goods, textile rolls, and staple food products.',
     keyProducts: ['Woven Cotton Fabrics', 'Consumer Staples', 'Spices & Seasonings'],
-    pathD: 'M 500 175 Q 380 250 210 240',
-    destX: 210,
-    destY: 240,
+    destX: 582,
+    destY: 322,
+    curveControlX: 628,
+    curveControlY: 308,
   },
   {
     id: 'europe',
@@ -94,9 +104,10 @@ const corridors: CorridorRoute[] = [
     distance: '~6,300 Nautical Miles',
     description: 'Long-term quality corridor serving European buyers with certified curcumin-rich turmeric, premium cotton textiles, and lab-tested organic spices.',
     keyProducts: ['High-Curcumin Turmeric', 'Organic Whole Spices', 'High-Thread Count Linens'],
-    pathD: 'M 500 175 Q 310 135 120 70',
-    destX: 120,
-    destY: 70,
+    destX: 495,
+    destY: 142,
+    curveControlX: 575,
+    curveControlY: 195,
   },
   {
     id: 'asean',
@@ -110,9 +121,10 @@ const corridors: CorridorRoute[] = [
     distance: '~1,700 Nautical Miles',
     description: 'Expanding eastward maritime trade corridor tapping into ASEAN culinary, spice re-packing, and ethnic grocery distribution channels.',
     keyProducts: ['Red Chilli Powder', 'Cashew Kernels', 'Traditional Indian Fabrics'],
-    pathD: 'M 500 175 Q 580 190 640 220',
-    destX: 640,
-    destY: 220,
+    destX: 754,
+    destY: 298,
+    curveControlX: 712,
+    curveControlY: 282,
   },
 ];
 
@@ -121,7 +133,7 @@ const lifecycleStages = [
     step: '01',
     title: 'Mandi Sourcing',
     location: 'Chhatrapati Sambhajinagar',
-    note: 'Direct procurement connections in farm mandis & textile mills',
+    note: 'Direct procurement in regional farm mandis & textile mills',
   },
   {
     step: '02',
@@ -145,7 +157,7 @@ const lifecycleStages = [
     step: '05',
     title: 'UAE Discharge',
     location: 'Jebel Ali Port (Dubai)',
-    note: 'Rapid customs clearance and wholesale distribution',
+    note: 'Expedited customs clearance and wholesale distribution',
   },
 ];
 
@@ -158,7 +170,7 @@ export default function IndiaGlobalRoute() {
 
   return (
     <section className="py-16 sm:py-20 bg-[#071A2B] text-white relative overflow-hidden border-t border-b border-slate-800">
-      {/* Radial background glow */}
+      {/* Background glow */}
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#07579F_1px,transparent_1px)] [background-size:24px_24px]" />
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#07579F]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-[#D71925]/15 rounded-full blur-3xl pointer-events-none" />
@@ -205,11 +217,11 @@ export default function IndiaGlobalRoute() {
           })}
         </div>
 
-        {/* Console Container */}
+        {/* Visualizer Console Container */}
         <div className="bg-slate-950 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl overflow-hidden">
           
-          {/* Telemetry Header Bar */}
-          <div className="bg-slate-900/90 px-4 sm:px-6 py-3.5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+          {/* Telemetry Header */}
+          <div className="bg-slate-900/95 px-4 sm:px-6 py-3.5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <div className="flex items-center space-x-1.5 text-slate-300">
                 <Activity className="w-4 h-4 text-emerald-400 animate-pulse shrink-0" />
@@ -240,165 +252,150 @@ export default function IndiaGlobalRoute() {
             </div>
           </div>
 
-          {/* Main Map Visual Canvas */}
-          <div className="relative p-4 sm:p-8 bg-radial from-slate-900 via-slate-950 to-black overflow-hidden flex flex-col justify-between">
+          {/* Map & Corridor Canvas Area */}
+          <div className="relative bg-[#051322] p-4 sm:p-8 overflow-hidden">
             
-            {/* Embedded World Map & Maritime Route SVG */}
-            <div className="relative w-full aspect-16/10 sm:aspect-21/9 min-h-[260px] sm:min-h-[340px]">
+            {/* World Map Background Graphic (Realistic Cartographic Robinson Projection) */}
+            <div className="relative w-full aspect-16/9 min-h-[300px] sm:min-h-[440px] rounded-xl overflow-hidden border border-slate-800 bg-[#06121e]">
+              <Image
+                src="/images/trade/world-map-dark.jpg"
+                alt="Global Maritime Trade Map"
+                fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="object-cover object-center opacity-85 pointer-events-none select-none"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#051322]/90 via-transparent to-[#051322]/40 pointer-events-none" />
+
+              {/* Dynamic Interactive SVG Corridor Routes Overlay */}
               <svg
                 className="absolute inset-0 w-full h-full"
-                viewBox="0 0 740 340"
+                viewBox="0 0 1000 562"
                 preserveAspectRatio="xMidYMid meet"
               >
                 <defs>
-                  <linearGradient id="activeCorridorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="activeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#07579F" />
                     <stop offset="50%" stopColor="#FFD400" />
                     <stop offset="100%" stopColor="#D71925" />
                   </linearGradient>
 
-                  <linearGradient id="futureCorridorGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="futureGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#07579F" />
                     <stop offset="100%" stopColor="#38bdf8" />
                   </linearGradient>
 
-                  {/* World Map Background Pattern */}
-                  <pattern id="gridPattern" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="1" fill="#334155" opacity="0.3" />
-                  </pattern>
+                  <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#38bdf8" floodOpacity="0.6" />
+                  </filter>
                 </defs>
 
-                {/* Subtle Coordinate Grid */}
-                <rect width="740" height="340" fill="url(#gridPattern)" />
-                <line x1="30" y1="85" x2="710" y2="85" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-                <line x1="30" y1="170" x2="710" y2="170" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-                <line x1="30" y1="255" x2="710" y2="255" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-                <line x1="185" y1="20" x2="185" y2="320" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-                <line x1="370" y1="20" x2="370" y2="320" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-                <line x1="555" y1="20" x2="555" y2="320" stroke="#1e293b" strokeWidth="0.8" strokeDasharray="4, 6" />
-
-                {/* ============================================================ */}
-                {/* ACCURATE WORLD MAP CONTINENT OUTLINES (MINIMAL OPACITY 15%) */}
-                {/* ============================================================ */}
-                <g opacity="0.16" fill="#334155" stroke="#64748b" strokeWidth="0.8">
-                  {/* Western Europe & UK */}
-                  <path d="M 80 40 L 95 35 L 115 30 L 125 45 L 140 40 L 145 60 L 130 75 L 110 85 L 90 75 L 85 55 Z" />
-                  <path d="M 100 22 L 108 20 L 112 30 L 103 32 Z" /> {/* UK */}
-
-                  {/* Mediterranean Basin / Southern Europe */}
-                  <path d="M 120 75 L 150 70 L 175 80 L 170 95 L 140 95 L 125 85 Z" />
-
-                  {/* African Continent */}
-                  <path d="M 95 95 L 165 95 L 205 130 L 225 170 L 220 220 L 205 270 L 175 300 L 150 280 L 140 230 L 115 175 L 85 140 L 80 115 Z" />
-                  <path d="M 225 240 L 235 250 L 230 270 L 220 260 Z" /> {/* Madagascar */}
-
-                  {/* Arabian Peninsula & Middle East */}
-                  <path d="M 195 110 L 240 105 L 275 120 L 290 145 L 270 175 L 235 180 L 205 160 L 200 130 Z" />
-
-                  {/* Persian Gulf & Red Sea waterways */}
-                  <circle cx="280" cy="135" r="3" fill="#07579F" opacity="0.8" /> {/* Jebel Ali / Dubai */}
-
-                  {/* Indian Subcontinent */}
-                  <path d="M 440 115 L 485 110 L 530 120 L 545 155 L 535 200 L 510 240 L 490 255 L 475 220 L 460 175 L 445 145 Z" />
-                  <path d="M 515 255 L 522 260 L 518 270 L 512 265 Z" /> {/* Sri Lanka */}
-
-                  {/* Central Asia / Russia */}
-                  <path d="M 280 40 L 400 30 L 550 35 L 620 50 L 600 95 L 530 110 L 450 100 L 350 90 L 270 85 Z" />
-
-                  {/* Southeast Asia & Indochina */}
-                  <path d="M 560 140 L 610 145 L 635 175 L 620 210 L 600 195 L 580 170 Z" />
-                  <path d="M 615 225 L 635 230 L 640 250 L 620 245 Z" /> {/* Malay Peninsula & Singapore */}
-                  <path d="M 625 255 L 670 260 L 650 280 L 610 270 Z" /> {/* Indonesian Archipelago */}
-                  <path d="M 660 210 L 685 220 L 675 250 L 650 235 Z" /> {/* Philippines */}
-
-                  {/* Australia (corner hint) */}
-                  <path d="M 670 290 L 715 285 L 730 320 L 690 330 Z" />
-                </g>
-
-                {/* Ocean Region Watermark Labels (Subtle) */}
-                <text x="350" y="240" fill="#475569" fontSize="10" fontFamily="monospace" letterSpacing="3" opacity="0.4">
-                  ARABIAN SEA / INDIAN OCEAN
-                </text>
-                <text x="210" y="85" fill="#475569" fontSize="8" fontFamily="monospace" letterSpacing="2" opacity="0.3">
-                  MEDITERRANEAN / SUEZ
-                </text>
-                <text x="590" y="250" fill="#475569" fontSize="8" fontFamily="monospace" letterSpacing="2" opacity="0.3">
-                  MALACCA STRAIT
-                </text>
-
-                {/* Background inactive corridor trails */}
+                {/* All Inactive Corridor Route Trails (Clickable to switch) */}
                 {corridors.map((c) => {
                   if (c.id === selectedCorridorId) return null;
                   return (
-                    <path
+                    <g
                       key={c.id}
-                      d={c.pathD}
-                      fill="none"
-                      stroke="#334155"
-                      strokeWidth="1.5"
-                      strokeDasharray="4, 5"
-                      opacity="0.5"
-                    />
+                      onClick={() => setSelectedCorridorId(c.id)}
+                      className="cursor-pointer group"
+                    >
+                      <path
+                        d={`M ${ORIGIN_X} ${ORIGIN_Y} Q ${c.curveControlX} ${c.curveControlY} ${c.destX} ${c.destY}`}
+                        fill="none"
+                        stroke="#475569"
+                        strokeWidth="2"
+                        strokeDasharray="5, 6"
+                        opacity="0.65"
+                        className="group-hover:stroke-blue-400 group-hover:opacity-100 transition-all"
+                      />
+                      {/* Subdued Destination Dot */}
+                      <circle
+                        cx={c.destX}
+                        cy={c.destY}
+                        r="5"
+                        fill="#334155"
+                        stroke="#94a3b8"
+                        strokeWidth="1.5"
+                        className="group-hover:fill-blue-400 transition-all"
+                      />
+                    </g>
                   );
                 })}
 
-                {/* Active Selected Animated Route Line */}
+                {/* Active Selected Animated Route */}
                 <path
-                  d={activeCorridor.pathD}
+                  d={`M ${ORIGIN_X} ${ORIGIN_Y} Q ${activeCorridor.curveControlX} ${activeCorridor.curveControlY} ${activeCorridor.destX} ${activeCorridor.destY}`}
                   fill="none"
-                  stroke={activeCorridor.status === 'active' ? 'url(#activeCorridorGrad)' : 'url(#futureCorridorGrad)'}
-                  strokeWidth="3.5"
+                  stroke={activeCorridor.status === 'active' ? 'url(#activeGradient)' : 'url(#futureGradient)'}
+                  strokeWidth="4"
                   className="route-dash"
+                  filter="url(#glowEffect)"
                 />
 
-                {/* Origin Marker: JNPT / Mumbai (500, 175) */}
-                <circle cx="500" cy="175" r="6" fill="#07579F" stroke="#ffffff" strokeWidth="1.5" />
-                <circle cx="500" cy="175" r="14" fill="#07579F" opacity="0.3" className="animate-ping" />
-                <text x="512" y="172" fill="#ffffff" fontSize="9" fontWeight="bold" fontFamily="sans-serif">
-                  INDIA (JNPT)
-                </text>
+                {/* Origin Marker: India (JNPT / Mumbai) */}
+                <g>
+                  <circle cx={ORIGIN_X} cy={ORIGIN_Y} r="7" fill="#07579F" stroke="#ffffff" strokeWidth="2" />
+                  <circle cx={ORIGIN_X} cy={ORIGIN_Y} r="18" fill="#07579F" opacity="0.35" className="animate-ping" />
+                  <rect x={ORIGIN_X - 10} y={ORIGIN_Y - 26} width="96" height="20" rx="4" fill="#071A2B" fillOpacity="0.95" stroke="#07579F" strokeWidth="1.5" />
+                  <text x={ORIGIN_X - 4} y={ORIGIN_Y - 12} fill="#ffffff" fontSize="10" fontWeight="bold" fontFamily="sans-serif">
+                    INDIA (JNPT)
+                  </text>
+                </g>
 
                 {/* Destination Marker */}
-                <circle
-                  cx={activeCorridor.destX}
-                  cy={activeCorridor.destY}
-                  r="7"
-                  fill={activeCorridor.status === 'active' ? '#D71925' : '#38bdf8'}
-                  stroke="#ffffff"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx={activeCorridor.destX}
-                  cy={activeCorridor.destY}
-                  r="16"
-                  fill={activeCorridor.status === 'active' ? '#D71925' : '#38bdf8'}
-                  opacity="0.3"
-                  className="animate-ping"
-                />
-                <text
-                  x={activeCorridor.destX - 10}
-                  y={activeCorridor.destY - 12}
-                  fill={activeCorridor.status === 'active' ? '#FFD400' : '#38bdf8'}
-                  fontSize="9"
-                  fontWeight="bold"
-                  fontFamily="sans-serif"
-                >
-                  {activeCorridor.shortName.toUpperCase()}
-                </text>
+                <g>
+                  <circle
+                    cx={activeCorridor.destX}
+                    cy={activeCorridor.destY}
+                    r="8"
+                    fill={activeCorridor.status === 'active' ? '#D71925' : '#38bdf8'}
+                    stroke="#ffffff"
+                    strokeWidth="2.5"
+                  />
+                  <circle
+                    cx={activeCorridor.destX}
+                    cy={activeCorridor.destY}
+                    r="22"
+                    fill={activeCorridor.status === 'active' ? '#D71925' : '#38bdf8'}
+                    opacity="0.35"
+                    className="animate-ping"
+                  />
+                  <rect
+                    x={activeCorridor.destX - 12}
+                    y={activeCorridor.destY - 28}
+                    width={activeCorridor.shortName.length > 14 ? 140 : 120}
+                    height="20"
+                    rx="4"
+                    fill="#071A2B"
+                    fillOpacity="0.95"
+                    stroke={activeCorridor.status === 'active' ? '#D71925' : '#38bdf8'}
+                    strokeWidth="1.5"
+                  />
+                  <text
+                    x={activeCorridor.destX - 6}
+                    y={activeCorridor.destY - 14}
+                    fill={activeCorridor.status === 'active' ? '#FFD400' : '#38bdf8'}
+                    fontSize="10"
+                    fontWeight="bold"
+                    fontFamily="sans-serif"
+                  >
+                    {activeCorridor.shortName.toUpperCase()}
+                  </text>
+                </g>
               </svg>
             </div>
 
-            {/* Responsive Floating Telemetry Node Cards (Cleanly structured for mobile & desktop) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 relative z-10">
+            {/* Responsive Telemetry Info Cards (Separated for guaranteed zero overlap on any screen) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
               
               {/* Origin Card */}
-              <div className="bg-slate-900/90 backdrop-blur-md p-3.5 sm:p-4 rounded-xl border border-blue-800/70 shadow-lg">
+              <div className="bg-slate-900/95 p-3.5 sm:p-4 rounded-xl border border-blue-800/80 shadow-lg">
                 <div className="flex items-center justify-between mb-1">
                   <span className="inline-flex items-center space-x-1 text-[10px] font-bold text-white bg-blue-900/90 px-2 py-0.5 rounded-full border border-blue-600">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                    <span>ORIGIN</span>
+                    <span>ORIGIN SOURCING BASE</span>
                   </span>
-                  <span className="text-[10px] text-slate-400">Maharashtra Belt</span>
+                  <span className="text-[10px] text-slate-400">Western Maharashtra</span>
                 </div>
                 <div className="font-bold text-xs sm:text-sm text-white">
                   Chhatrapati Sambhajinagar
@@ -409,10 +406,10 @@ export default function IndiaGlobalRoute() {
               </div>
 
               {/* Destination Card */}
-              <div className={`p-3.5 sm:p-4 rounded-xl backdrop-blur-md shadow-lg border ${
+              <div className={`p-3.5 sm:p-4 rounded-xl shadow-lg border ${
                 activeCorridor.status === 'active'
-                  ? 'bg-slate-900/90 border-red-800/80'
-                  : 'bg-slate-900/90 border-sky-800/80'
+                  ? 'bg-slate-900/95 border-red-800/80'
+                  : 'bg-slate-900/95 border-sky-800/80'
               }`}>
                 <div className="flex items-center justify-between mb-1">
                   <span className={`inline-flex items-center space-x-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
@@ -421,7 +418,7 @@ export default function IndiaGlobalRoute() {
                       : 'bg-sky-950 text-sky-200 border-sky-700'
                   }`}>
                     <Globe className="w-3 h-3 text-[#FFD400]" />
-                    <span>{activeCorridor.status === 'active' ? 'CONFIRMED TARGET' : 'FUTURE OPPORTUNITY'}</span>
+                    <span>{activeCorridor.status === 'active' ? 'CONFIRMED TARGET MARKET' : 'FUTURE OPPORTUNITY'}</span>
                   </span>
                   <span className="text-[10px] text-emerald-400 font-semibold">{activeCorridor.transitTime}</span>
                 </div>
@@ -435,8 +432,8 @@ export default function IndiaGlobalRoute() {
 
             </div>
 
-            {/* Bottom Sourcing Checklist */}
-            <div className="bg-black/50 backdrop-blur-md p-3.5 sm:p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-3 relative z-10">
+            {/* Sourcing Focus Strip */}
+            <div className="bg-slate-900/95 p-3.5 sm:p-4 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-3">
               <div className="text-xs">
                 <span className="text-slate-400 text-[10px] uppercase font-bold block mb-1">
                   Key Sourcing Focus for this Route:
@@ -445,7 +442,7 @@ export default function IndiaGlobalRoute() {
                   {activeCorridor.keyProducts.map((p, i) => (
                     <span
                       key={i}
-                      className="px-2 py-0.5 rounded bg-slate-800/90 border border-slate-700 text-slate-300 text-[10px] sm:text-[11px]"
+                      className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 text-[10px] sm:text-[11px]"
                     >
                       {p}
                     </span>
@@ -463,7 +460,7 @@ export default function IndiaGlobalRoute() {
 
           </div>
 
-          {/* 5-Step Checkpoints Footer */}
+          {/* Staging Checkpoints Footer */}
           <div className="bg-slate-900/95 p-4 sm:p-6 border-t border-slate-800">
             <div className="flex items-center justify-between mb-3 text-xs">
               <span className="font-bold uppercase tracking-wider text-slate-400 flex items-center space-x-1.5">
