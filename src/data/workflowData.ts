@@ -91,4 +91,13 @@ export const targetMarkets: MarketDestination[] = [
     description: 'Future avenues for high-curcumin turmeric, certified organic spices, and premium natural cotton textiles meeting European compliance standards.',
     portsOrHubs: ['Rotterdam', 'Antwerp', 'Felixstowe'],
   },
+  {
+    id: 'southeast-asia',
+    region: 'Southeast Asia & ASEAN',
+    country: 'Singapore & Malaysia',
+    status: 'future_opportunity',
+    highlight: 'Regional Commerce & Spice Hub',
+    description: 'High commercial affinity for premium Indian traditional textiles, whole red chillies, and specialty food products across ASEAN distribution corridors.',
+    portsOrHubs: ['Port of Singapore', 'Port Klang (Malaysia)', 'Tanjung Pelepas'],
+  },
 ];
