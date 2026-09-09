@@ -13,19 +13,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-slate-800">
           {/* Column 1 & 2: Brand Identity & Founder Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white/95 rounded-xl p-3 inline-block shadow-xs">
-              <div className="relative h-10 w-48 sm:w-56">
-                <Image
-                  src="/images/logo.png"
-                  alt="MrParthExim"
-                  fill
-                  className="object-contain object-left"
-                />
+            <div className="flex flex-col items-start space-y-2.5">
+              <div className="bg-white/95 rounded-xl p-3 shadow-xs inline-block">
+                <div className="relative h-10 w-48 sm:w-56">
+                  <Image
+                    src="/images/logo.png"
+                    alt="MrParthExim"
+                    fill
+                    className="object-contain object-left"
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="inline-block px-2.5 py-1 bg-blue-950/80 border border-blue-800 text-[#FFD400] text-xs rounded-md font-medium">
-              &quot;{siteConfig.tagline}&quot;
+              <div className="inline-block px-2.5 py-1 bg-blue-950/80 border border-blue-800 text-[#FFD400] text-xs rounded-md font-medium">
+                &quot;{siteConfig.tagline}&quot;
+              </div>
             </div>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-md">
