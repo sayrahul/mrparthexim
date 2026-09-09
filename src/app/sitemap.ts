@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { productsData } from '@/data/productsData';
 import { blogPosts } from '@/data/blogData';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.mrparthexim.com';
 
