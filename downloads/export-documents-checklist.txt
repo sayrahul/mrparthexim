@@ -1,0 +1,33 @@
+EXPORT DOCUMENTS CHECKLIST
+Mr Parth Exim | The final document set depends on the product, destination, Incoterm and buyer instructions.
+
+COMMERCIAL
+[ ] Purchase order and order confirmation
+[ ] Commercial invoice
+[ ] Packing list
+[ ] Payment documents as agreed
+
+QUALITY
+[ ] Approved specification
+[ ] Batch Certificate of Analysis, where agreed
+[ ] Microbiology, residue, metal or mycotoxin reports, where agreed
+[ ] Allergen, Non-GMO and other contractual declarations
+[ ] Third-party inspection report, where agreed
+
+ORIGIN AND HEALTH
+[ ] Certificate of origin
+[ ] Health certificate, where applicable
+[ ] Phytosanitary certificate, where applicable
+[ ] Fumigation certificate, where applicable
+
+TRANSPORT
+[ ] Shipping instructions
+[ ] Bill of lading or airway bill
+[ ] Insurance certificate, where applicable
+[ ] Container condition and loading record, where agreed
+
+CONSISTENCY CHECK BEFORE CARGO MOVES
+Names, quantity, currency, Incoterm, port, marks, weights and dates should agree across all documents and match the purchase order.
+
+Educational information only. Not legal, customs, tax, regulatory or laboratory advice.
+Confirm current requirements with relevant professionals and authorities.

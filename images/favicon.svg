@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#15803d" />
+      <stop offset="100%" stop-color="#0f5132" />
+    </linearGradient>
+  </defs>
+  <!-- Background Container -->
+  <rect width="64" height="64" rx="14" fill="url(#favGrad)"/>
+  
+  <!-- Export Dynamic Jet Path -->
+  <path d="M12 28 C26 20, 42 16, 54 13" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <!-- Stylized Jet Icon -->
+  <path d="M52 11 L56 13 L51 16 L49 14 Z" fill="#ea580c"/>
+
+  <!-- Stylized Letter 'M' in Crisp White -->
+  <path d="M14 46 L14 26 L22 37 L30 26 L30 46" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Stylized Letter 'P' with Currency Crossbar in Vivid Saffron Orange -->
+  <path d="M37 46 L37 25 C45 25, 49 27, 49 33 C49 39, 44 41, 37 41" fill="none" stroke="#ea580c" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Rupee / Export horizontal hash -->
+  <line x1="33" y1="31" x2="43" y2="31" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

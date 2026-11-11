@@ -1,0 +1,1297 @@
+/* ==========================================================================
+   Mr Parth Exim - Home Page (old site design: dark hero slider, photo cards, step tabs)
+   Loaded after styles.css on index.html, and on the four product pages for their one-slide hero.
+   Rules are scoped to .h-* classes or .page-home, so they do not touch other pages' layout.
+   ========================================================================== */
+
+/* Design Tokens: Light */
+.page-home {
+    --bg: #ffffff;
+    --bg-alt: #f8fafc;
+    --surface: #ffffff;
+    --ink: #0f172a;
+    --muted: #475569;
+    --line: #e2e8f0;
+    --green: #15803d;
+    --green-hover: #166534;
+    --green-text: #15803d;
+    --forest: #020617;
+    --accent: #c2410c;
+    --accent-text: #c2410c;
+    --gold: #f59e0b;
+    --gold-text: #b45309;
+    --gold-soft: #fbbf24;
+    --tint: #dcfce7;
+    --notice: #fff7ed;
+    --shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+    --header-bg: rgba(2, 6, 23, 0.96);
+}
+
+/* Design Tokens: Dark */
+.dark .page-home {
+    --bg: #020617;
+    --bg-alt: #0f172a;
+    --surface: #0f172a;
+    --ink: #f1f5f9;
+    --muted: #a3b1c4;
+    --line: #1e293b;
+    --green-text: #4ade80;
+    --accent-text: #fb923c;
+    --gold-text: #fbbf24;
+    --tint: #052e16;
+    --notice: #1c1917;
+    --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.8);
+}
+
+.page-home .container {
+    max-width: 1280px;
+}
+
+.h-defs {
+    position: absolute;
+}
+
+/* Header stays dark in both themes, as on the old site */
+.page-home .topbar {
+    border-bottom: 1px solid #1e293b;
+    background: #020617;
+    color: #e2e8f0;
+}
+
+.page-home .site-header {
+    --ink: #ffffff;
+    --muted: #a3b1c4;
+    --line: #1e293b;
+    --surface: #0f172a;
+    --tint: #1e293b;
+    --accent-text: #fbbf24;
+}
+
+.page-home .site-footer {
+    background: #0f172a;
+}
+
+/* Buttons */
+.page-home .btn {
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.page-home .field input,
+.page-home .field select,
+.page-home .field textarea {
+    border-radius: 12px;
+}
+
+.h-btn-glass {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.h-btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.h-btn-glass .fa-paper-plane {
+    color: #fbbf24;
+}
+
+/* .h-btn-orange and the green .h-cta band live in styles.css (used on every page) */
+
+/* Paper Edge */
+.h-tear {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    z-index: 4;
+    display: block;
+    width: 100%;
+    height: clamp(20px, 3.2vw, 44px);
+    color: var(--tear-color, var(--bg-alt));
+    pointer-events: none;
+}
+
+.h-tear--top {
+    top: -1px;
+    bottom: auto;
+    transform: scaleY(-1);
+}
+
+/* ==========================================================================
+   Hero Slider
+   ========================================================================== */
+.h-hero {
+    position: relative;
+    overflow: hidden;
+    background: #020617;
+    color: #ffffff;
+}
+
+.h-hero__stage {
+    display: grid;
+}
+
+.h-slide {
+    --tone: #34d399;
+    --tone-to: #86efac;
+    --cta: #15803d;
+    --cta-hover: #166534;
+    grid-area: 1 / 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 236px 0 74px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.85s ease-in-out, visibility 0s linear 0.85s;
+}
+
+.h-slide.is-active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.85s ease-in-out;
+}
+
+.h-slide--amber {
+    --tone: #fbbf24;
+    --tone-to: #fb923c;
+    --cta: #b45309;
+    --cta-hover: #92400e;
+}
+
+.h-slide--red {
+    --tone: #f87171;
+    --tone-to: #ef4444;
+    --cta: #dc2626;
+    --cta-hover: #b91c1c;
+}
+
+.h-slide--rose {
+    --tone: #fb7185;
+    --tone-to: #f9a8d4;
+    --cta: #e11d48;
+    --cta-hover: #be123c;
+}
+
+.h-slide__media {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 340px;
+    overflow: hidden;
+    transform: scale(1.06);
+    transition: transform 6.5s ease-out;
+}
+
+.h-slide.is-active .h-slide__media {
+    transform: scale(1);
+}
+
+.h-slide__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0.1) 0%, rgba(2, 6, 23, 0.15) 45%, #020617 96%);
+}
+
+.h-slide__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.h-slide__in {
+    position: relative;
+    z-index: 2;
+}
+
+.h-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    padding: 6px 14px;
+    border: 1px solid color-mix(in srgb, var(--tone) 35%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--tone) 12%, rgba(2, 6, 23, 0.55));
+    color: var(--tone);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    text-transform: uppercase;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.h-chip__dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--tone);
+}
+
+.h-hero h1,
+.h-hero h2 {
+    margin-top: 14px;
+    color: #ffffff;
+    font-size: clamp(1.9rem, 3.8vw, 3.25rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+/* The solid colour stays as the fallback where gradient text is not supported */
+.h-grad {
+    color: var(--tone, #34d399);
+    background: linear-gradient(90deg, var(--tone, #34d399), var(--tone-to, #fcd34d));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.h-hero h1 .h-grad {
+    display: block;
+}
+
+/* Product slide titles (client, 10 Nov 2026): "Dehydrated" in dark yellow, then the product name in its own
+   colour: White Onion white, Red Onion red, Pink Onion pink, Garlic in the golden gradient it already had */
+.h-title {
+    letter-spacing: -0.02em;
+}
+
+.h-dehyd {
+    color: #d9a406;
+}
+
+.h-name--white {
+    color: #ffffff;
+}
+
+.h-name--red {
+    color: #ef4444;
+}
+
+.h-name--pink {
+    color: #f472b6;
+}
+
+.h-name--gold {
+    color: #fbbf24;
+    background: linear-gradient(90deg, #fbbf24, #fb923c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Available forms, written out as one line under the product name */
+.h-forms {
+    margin-top: 14px;
+    color: #e2e8f0;
+    font-size: clamp(0.98rem, 1.7vw, 1.15rem);
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.h-slide__lead {
+    max-width: 620px;
+    margin-top: 14px;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.h-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 16px;
+}
+
+.h-tags li {
+    padding: 4px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.h-slide__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+/* Same button shape on the product pages, which do not carry .page-home */
+.h-hero .btn {
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.h-slide .btn--primary {
+    background: var(--cta);
+}
+
+.h-slide .btn--primary:hover {
+    background: var(--cta-hover);
+}
+
+.h-hero__arrow {
+    position: absolute;
+    top: 118px;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.h-hero__arrow:hover {
+    background: #15803d;
+}
+
+.h-hero__arrow--prev {
+    inset-inline-start: 12px;
+}
+
+.h-hero__arrow--next {
+    inset-inline-end: 12px;
+}
+
+[dir="rtl"] .h-hero__arrow i {
+    transform: scaleX(-1);
+}
+
+.h-dots {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(26px, 4vw, 54px);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    background: rgba(2, 6, 23, 0.6);
+    transform: translateX(-50%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.h-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.h-dot::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.55);
+    transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.h-dot.is-active::before {
+    width: 30px;
+    background: #22c55e;
+}
+
+/* ==========================================================================
+   Sections & Headings
+   ========================================================================== */
+.h-strip {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-alt);
+}
+
+.h-strip__in {
+    display: grid;
+    gap: 18px;
+    padding-block: 18px 30px;
+}
+
+.h-strip__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.h-strip h2 {
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+.h-strip p {
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.h-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 15px;
+    font-size: 1.15rem;
+}
+
+.h-tile--green { background: #dcfce7; color: #15803d; }
+.h-tile--orange { background: #ffedd5; color: #c2410c; }
+.h-tile--amber { background: #fef3c7; color: #b45309; }
+.h-tile--blue { background: #dbeafe; color: #1d4ed8; }
+
+.dark .h-tile--green { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+.dark .h-tile--orange { background: rgba(249, 115, 22, 0.16); color: #fb923c; }
+.dark .h-tile--amber { background: rgba(245, 158, 11, 0.16); color: #fbbf24; }
+.dark .h-tile--blue { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+
+.h-sec {
+    padding-block: 60px;
+    background: var(--bg);
+}
+
+.h-sec--alt {
+    border-block: 1px solid var(--line);
+    background: var(--bg-alt);
+}
+
+.h-sec--flush {
+    padding-bottom: 84px;
+    overflow: hidden;
+}
+
+.page-home main h2 {
+    font-size: clamp(1.75rem, 3vw, 2.45rem);
+}
+
+.page-home .h-hero h2 {
+    font-size: clamp(1.9rem, 3.8vw, 3.25rem);
+}
+
+.page-home .h-strip h2 {
+    font-size: 1rem;
+}
+
+.h-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px 48px;
+    margin-bottom: 36px;
+}
+
+.h-head > div {
+    flex: 1 1 480px;
+    max-width: 760px;
+}
+
+.h-head__intro {
+    flex: 0 1 460px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.h-head__intro--below {
+    margin-top: 14px;
+    font-size: 1rem;
+}
+
+.h-head--center {
+    display: block;
+    max-width: 760px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.h-head--center h2 {
+    margin-top: 12px;
+}
+
+.h-head--center .h-head__intro {
+    margin-top: 12px;
+}
+
+.h-kicker {
+    margin-bottom: 8px;
+    color: var(--accent-text);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.h-kicker--green {
+    color: var(--green-text);
+}
+
+.h-kicker--gold {
+    color: #fcd34d;
+}
+
+.h-chip--green {
+    --tone: #4ade80;
+    background: rgba(21, 128, 61, 0.22);
+    border-color: rgba(74, 222, 128, 0.32);
+}
+
+.h-chip--soft {
+    border-color: transparent;
+    background: var(--tint);
+    color: var(--green-text);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.h-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.h-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--accent-text);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.h-link:hover {
+    text-decoration: underline;
+}
+
+.h-link--muted {
+    color: var(--muted);
+}
+
+.h-note {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+.h-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--surface);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.h-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 22px 40px -26px rgba(15, 23, 42, 0.5);
+}
+
+.h-card__media {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #f1f5f9;
+}
+
+.h-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.h-card:hover .h-card__media img {
+    transform: scale(1.05);
+}
+
+.h-card__media .media--emoji {
+    height: 100%;
+    aspect-ratio: auto;
+}
+
+.h-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.h-card h3 {
+    font-size: 1.12rem;
+}
+
+.h-card h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.h-card h3 a:hover {
+    color: var(--green-text, var(--green));
+}
+
+.h-card__body > p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* Read More + Get a Quote side by side when both fit on one line, otherwise stacked full width.
+   Button text never breaks onto two lines. */
+.h-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+.h-card__actions .btn {
+    flex: 1 1 0;
+    min-width: max-content;
+    gap: 6px;
+    padding-inline: 6px;
+    font-size: 0.84rem;
+    white-space: nowrap;
+}
+
+.h-card--pad {
+    padding: 26px 24px;
+}
+
+.h-card--pad > .h-tile {
+    margin-bottom: 16px;
+}
+
+.h-card--pad > p:not(.h-kicker) {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.h-card__title {
+    margin-bottom: 4px;
+}
+
+.page-home .h-card .h-card__title {
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+.h-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.h-list li {
+    display: flex;
+    gap: 10px;
+    color: var(--ink);
+}
+
+.h-list i {
+    flex: none;
+    margin-top: 4px;
+    color: var(--green-text);
+    font-size: 0.85rem;
+}
+
+.h-forms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.h-forms li {
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.h-card__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+/* ==========================================================================
+   Export Workflow Steps (dark in both themes)
+   ========================================================================== */
+.h-journey {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #1e293b;
+    padding-block: 64px;
+    background: #020617;
+    color: #ffffff;
+}
+
+.h-journey::before,
+.h-journey::after {
+    content: "";
+    position: absolute;
+    width: 26rem;
+    height: 26rem;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+}
+
+.h-journey::before {
+    top: -6rem;
+    left: 18%;
+    background: rgba(21, 128, 61, 0.2);
+}
+
+.h-journey::after {
+    right: 18%;
+    bottom: -6rem;
+    background: rgba(234, 88, 12, 0.16);
+}
+
+.h-journey__in {
+    position: relative;
+    z-index: 1;
+}
+
+.page-home .h-journey h2,
+.h-journey h3 {
+    color: #ffffff;
+}
+
+.h-journey .h-head__intro {
+    color: #cbd5e1;
+}
+
+.h-journey .h-grad {
+    --tone: #34d399;
+    --tone-to: #fcd34d;
+}
+
+.h-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.h-tab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #cbd5e1;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: start;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.h-tab:hover {
+    border-color: #334155;
+}
+
+.h-tab.is-active {
+    border-color: #22c55e;
+    background: rgba(21, 128, 61, 0.24);
+    color: #ffffff;
+}
+
+.h-tab__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 0.74rem;
+}
+
+.h-tab.is-active .h-tab__num {
+    background: #15803d;
+    color: #ffffff;
+}
+
+.h-step {
+    display: grid;
+    gap: 22px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid #1e293b;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+.h-step[hidden] {
+    display: none;
+}
+
+.h-step__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    background: #020617;
+}
+
+.h-step__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.h-step__count {
+    position: absolute;
+    bottom: 12px;
+    inset-inline-end: 12px;
+    padding: 3px 10px;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    background: rgba(2, 6, 23, 0.85);
+    color: #e2e8f0;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.page-home .h-step h3 {
+    font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+.h-step__body p {
+    margin-top: 12px;
+    color: #cbd5e1;
+    line-height: 1.65;
+}
+
+.h-step__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid #1e293b;
+}
+
+.h-step__arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.h-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    background: #1e293b;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.h-arrow:hover {
+    background: #334155;
+}
+
+[dir="rtl"] .h-arrow i {
+    transform: scaleX(-1);
+}
+
+/* ==========================================================================
+   Who We Are
+   ========================================================================== */
+.h-who {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+}
+
+.h-who__art {
+    position: relative;
+    width: min(100%, 460px);
+    margin-inline: auto;
+}
+
+.h-who__art::before {
+    content: "";
+    position: absolute;
+    inset: 6% -3% -5% 6%;
+    border-radius: 60% 40% 46% 54% / 46% 58% 42% 54%;
+    background: #ea580c;
+}
+
+.h-who__art::after {
+    content: "";
+    position: absolute;
+    top: 2%;
+    inset-inline-start: 4%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #15803d;
+}
+
+.h-who__art img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 60% center;
+    border-radius: 54% 46% 58% 42% / 52% 44% 56% 48%;
+}
+
+.h-who__text {
+    margin-top: 16px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.h-who__cta {
+    margin-top: 24px;
+}
+
+/* ==========================================================================
+   Quality Band (paper edges)
+   ========================================================================== */
+.h-band {
+    --tear-color: var(--bg);
+    position: relative;
+    padding-block: clamp(70px, 8vw, 112px);
+    background:
+        radial-gradient(52rem 26rem at 86% 8%, rgba(74, 222, 128, 0.14), transparent 70%),
+        linear-gradient(135deg, #14532d, #052e16 72%);
+    color: #ffffff;
+}
+
+.page-home .h-band > .container > .h-head h2 {
+    color: #ffffff;
+}
+
+.h-band .h-head__intro {
+    color: #d1fae5;
+}
+
+/* ==========================================================================
+   Quote Form & Call to Action
+   ========================================================================== */
+.h-formcard {
+    padding: 28px 20px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--bg-alt);
+    box-shadow: var(--shadow);
+}
+
+.h-formcard h2 {
+    margin-bottom: 24px;
+}
+
+.page-home .h-formcard .field input,
+.page-home .h-formcard .field select,
+.page-home .h-formcard .field textarea {
+    background: var(--surface);
+}
+
+/* ==========================================================================
+   Phone Bottom Navigation (old site)
+   ========================================================================== */
+.h-bottom-nav {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 39;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.h-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+    min-width: 0;
+    padding-block: 3px;
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+}
+
+.h-bottom-nav i {
+    font-size: 1.1rem;
+}
+
+.h-bottom-nav a[aria-current="page"] {
+    color: var(--green-text);
+    font-weight: 700;
+}
+
+.h-bottom-nav .h-bottom-nav__quote {
+    color: var(--green-text);
+    font-weight: 700;
+}
+
+.h-bottom-nav__quote span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-top: -12px;
+    border-radius: 50%;
+    background: #15803d;
+    color: #ffffff;
+    box-shadow: 0 6px 14px -6px rgba(21, 128, 61, 0.8);
+}
+
+.h-bottom-nav__quote i {
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Responsive Layout
+   ========================================================================== */
+@media (max-width: 479px) {
+    .h-grid--5 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .h-grid--5 .h-card__body {
+        padding: 14px;
+    }
+
+}
+
+@media (min-width: 480px) {
+    .h-tabs {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 640px) {
+    .h-grid--2,
+    .h-grid--3,
+    .h-grid--4,
+    .h-grid--5 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .h-formcard {
+        padding: 40px 36px;
+    }
+}
+
+@media (min-width: 761px) {
+    .h-bottom-nav {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .h-slide {
+        justify-content: center;
+        min-height: 600px;
+        padding: 56px 0 96px;
+    }
+
+    .h-slide__media {
+        inset: 0;
+        height: auto;
+    }
+
+    .h-slide__media::after {
+        background: linear-gradient(90deg, #020617 0%, rgba(2, 6, 23, 0.9) 36%, rgba(2, 6, 23, 0.25) 62%, rgba(2, 6, 23, 0) 78%);
+    }
+
+    [dir="rtl"] .h-slide__media::after {
+        transform: scaleX(-1);
+    }
+
+    [dir="rtl"] .h-slide__img {
+        transform: scaleX(-1);
+    }
+
+    .h-slide__img {
+        object-position: right center;
+    }
+
+    .h-slide__in {
+        padding-inline: 72px;
+    }
+
+    .h-slide__in > * {
+        max-width: 620px;
+    }
+
+    /* Product pages have one fixed slide and no arrows, so the text lines up with the logo */
+    .h-hero:not(#hero-slider) .h-slide__in {
+        padding-inline: 28px;
+    }
+
+    .h-hero__arrow {
+        top: 50%;
+        width: 48px;
+        height: 48px;
+        margin-top: -24px;
+    }
+
+    .h-hero__arrow--prev {
+        inset-inline-start: 18px;
+    }
+
+    .h-hero__arrow--next {
+        inset-inline-end: 18px;
+    }
+
+    .h-strip__in {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+        padding-block: 24px 30px;
+    }
+
+    .h-sec {
+        padding-block: 72px;
+    }
+
+    .h-sec--flush {
+        padding-bottom: 96px;
+    }
+
+    .h-step {
+        padding: 26px;
+    }
+}
+
+@media (min-width: 960px) {
+    .h-tabs {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .h-grid--3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .h-grid--4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .h-grid--4 .h-card__body {
+        padding-inline: 16px;
+    }
+
+    .h-grid--5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .h-grid--5 .h-card__body {
+        padding: 16px;
+    }
+
+    .h-step {
+        grid-template-columns: 7fr 5fr;
+        gap: 40px;
+        padding: 36px;
+    }
+
+    .h-who {
+        grid-template-columns: 5fr 7fr;
+        gap: 72px;
+    }
+
+    .h-journey {
+        padding-block: 88px;
+    }
+}
+
+/* Wide enough for the slide arrows to clear the text, so it can line up with the logo */
+@media (min-width: 1420px) {
+    .h-slide__in {
+        padding-inline: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .h-slide__media,
+    .h-slide.is-active .h-slide__media {
+        transform: none;
+    }
+}

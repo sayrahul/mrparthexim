@@ -1,0 +1,51 @@
+BUYER RFQ TEMPLATE
+Mr Parth Exim | Admin@mrparthexim.com | +91 91289 92289
+Complete what applies, then send it to us or to any supplier you are evaluating.
+
+1. BUYER DETAILS
+Name:
+Company name:
+Country:
+Email:
+Phone / WhatsApp:
+Business type (importer, distributor, manufacturer, repacker, other):
+
+2. PRODUCT
+Product:
+Form or cut (flakes, chopped, minced, granules, powder, other):
+Grade, particle size or mesh:
+End application:
+
+3. QUALITY REQUIREMENTS
+Physical limits (moisture, density, foreign matter):
+Sensory expectations (colour, aroma, flavour):
+Microbiological limits:
+Contaminant limits (residues, heavy metals, mycotoxins):
+Claims needed (for example Halal, Kosher, Organic, Non-GMO):
+
+4. QUANTITY
+Trial quantity:
+Annual or repeat quantity:
+Target first shipment date:
+
+5. PACKING AND MARKING
+Pack size and type:
+Inner liner requirement:
+Labels and shipping marks:
+Private label needed (yes/no):
+
+6. SHIPMENT
+Destination port and country:
+Preferred Incoterm:
+Documents required (invoice, packing list, bill of lading, certificate of origin, COA, phytosanitary, other):
+
+7. PLEASE CONFIRM IN WRITING
+Price basis and currency:
+MOQ:
+Lead time:
+Quotation validity:
+Payment terms:
+Sample terms and charges:
+Any deviation from this requirement:
+
+Submitting an RFQ does not constitute order acceptance, price confirmation or product reservation.

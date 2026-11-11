@@ -1,0 +1,36 @@
+SUPPLIER VERIFICATION CHECKLIST
+Mr Parth Exim | Educational template. Adapt it to your own risk process.
+Mark each item: Verified / Not verified / Not applicable.
+
+LEGAL
+[ ] Legal name matches on every document
+[ ] Registered address confirmed
+[ ] GST registration checked
+[ ] IEC (Import Export Code) checked
+[ ] FSSAI licence checked for name, address, status and validity
+[ ] APEDA / RCMC registration checked, where applicable
+[ ] Authorised contact person confirmed
+[ ] Business role confirmed: manufacturer, processor, exporter or trader
+
+FACTORY OR SOURCE
+[ ] Processing facility name and address identified
+[ ] Factory or remote video review completed, where feasible
+[ ] Capacity suits the order size and timeline
+[ ] Product range and form confirmed
+
+QUALITY
+[ ] Certificates checked for issuer, facility, scope and validity
+[ ] Certificate scope covers the product being purchased
+[ ] Sample received and evaluated
+[ ] Batch COA reviewed for product, batch, date, method, limit and result
+[ ] Laboratory and test methods agreed
+[ ] Packing, shelf life and storage conditions agreed
+
+BANKING AND COMMERCIAL
+[ ] Bank beneficiary name matches the legal name
+[ ] Bank details confirmed through a separate verified channel
+[ ] Any change of bank details re-confirmed before payment
+[ ] Price basis, Incoterm, payment terms and responsibilities agreed in writing
+
+Educational information only. Not legal, customs, tax, regulatory or laboratory advice.
+Confirm current requirements with relevant professionals and authorities.

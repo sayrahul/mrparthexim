@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dehydrated Pink Onion | Mr Parth Exim</title>
+    <meta name="description" content="Dehydrated Pink Onion in flakes, chopped, minced, granules and powder, sourced through suitable Indian processors for B2B buyers. Specification confirmed against every enquiry.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Theme is applied before first paint so the page does not flash -->
+    <script>try { if (localStorage.getItem('mpe_theme') === 'dark') document.documentElement.classList.add('dark'); } catch (e) {}</script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="has-sticky">
+
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Hidden Native Google Translate Mount -->
+    <div id="google_translate_element"></div>
+
+    <!-- ==================== TOP BAR: MOBILE | EMAIL | ADDRESS | SOCIAL | DARK MODE | CURRENCY | LANGUAGE ==================== -->
+    <div class="topbar">
+        <div class="container topbar__in">
+            <a class="tb-item notranslate" href="tel:+919128992289"><i class="fa-solid fa-phone" aria-hidden="true"></i><span dir="ltr">+91 91289 92289</span></a>
+            <a class="tb-item notranslate" href="mailto:Admin@mrparthexim.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>Admin@mrparthexim.com</a>
+            <a class="tb-item tb-address" href="contact.html#location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Chh. Sambhajinagar, Maharashtra, India</a>
+            <div class="socials">
+                    <span class="social is-pending" data-social="linkedin" role="img" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="instagram" role="img" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="facebook" role="img" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="youtube" role="img" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span>
+                </div>
+            <div class="topbar__tools">
+                <button type="button" class="theme-btn" onclick="toggleTheme()" aria-label="Switch between dark and light mode"><i id="theme-icon" class="fa-solid fa-moon" aria-hidden="true"></i><span id="theme-label">Dark Mode</span></button>
+                <button type="button" id="fx-btn" class="theme-btn fx-btn" onclick="toggleCurrencyConverter()" aria-expanded="false" aria-controls="fx-panel" aria-label="Currency converter"><i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i><span class="fx-btn__label">Currency</span></button>
+                <div class="lang">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96z"/>
+                    </svg>
+                    <select id="custom-lang-select" class="notranslate" onchange="changeLanguage(this.value)" aria-label="Select language">
+                        <option value="en">English</option>
+                        <option value="ar">العربية (Arabic)</option>
+                        <option value="id">Bahasa Indonesia (Indonesian)</option>
+                        <option value="tl">Filipino</option>
+                        <option value="de">Deutsch (German)</option>
+                        <option value="pt">Português (Portuguese)</option>
+                        <option value="ms">Bahasa Melayu (Malay)</option>
+                        <option value="fr">Français (French)</option>
+                        <option value="es">Español (Spanish)</option>
+                        <option value="ja">日本語 (Japanese)</option>
+                        <option value="vi">Tiếng Việt (Vietnamese)</option>
+                        <option value="ru">Русский (Russian)</option>
+                        <option value="th">ไทย (Thai)</option>
+                        <option value="zh-CN">简体中文 (Chinese)</option>
+                        <option value="ko">한국어 (Korean)</option>
+                        <option value="tr">Türkçe (Turkish)</option>
+                        <option value="iw">עברית (Hebrew)</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Currency converter panel (rates loaded by js/main.js when it is opened) -->
+            <div id="fx-panel" class="fx-panel" role="dialog" aria-labelledby="fx-title" hidden>
+                <div class="fx-panel__head"><h2 id="fx-title">Currency Converter</h2><button type="button" class="fx-panel__close" onclick="toggleCurrencyConverter(true)" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button></div>
+                <label class="fx-field"><span>Amount</span><input id="fx-amount" type="number" min="0" step="any" value="1" inputmode="decimal"></label>
+                <div class="fx-panel__pair">
+                    <label class="fx-field"><span>From</span><select id="fx-from" class="notranslate"></select></label>
+                    <button type="button" class="fx-swap" onclick="swapCurrencies()" aria-label="Swap currencies"><i class="fa-solid fa-right-left" aria-hidden="true"></i></button>
+                    <label class="fx-field"><span>To</span><select id="fx-to" class="notranslate"></select></label>
+                </div>
+                <div class="fx-panel__result" aria-live="polite"><span id="fx-from-line" class="notranslate"></span><strong id="fx-result" class="notranslate">&hellip;</strong><span id="fx-rate" class="notranslate"></span></div>
+                <small class="fx-panel__note">Indicative daily rates for reference only. Prices are confirmed in our quotation.</small>
+                <small class="fx-panel__meta"><span id="fx-updated"></span> <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API</a></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== STICKY HEADER: LOGO | COMPANY NAME + GST | TAGLINE | MENU ==================== -->
+    <header class="site-header">
+        <div class="container site-header__in">
+            <a class="brand" href="index.html" aria-label="Mr Parth Exim home">
+                <img class="brand__logo" src="images/logo-mrp.webp" alt="" width="420" height="267">
+                <span class="brand__text">
+                    <span class="brand__name notranslate">Mr Parth Exim</span>
+                    <span class="brand__gst notranslate" hidden>GST No: <span data-gstin></span></span>
+                </span>
+            </a>
+            <p class="tagline">Source With Clarity... Export With Confidence!!!</p>
+            <button type="button" id="menu-btn" class="menu-btn" onclick="toggleSiteMenu()" aria-label="Menu" aria-expanded="false" aria-controls="site-menu"><i id="menu-icon" class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            <nav id="site-menu" class="site-menu" aria-label="Main menu" hidden>
+                <ol>
+                    <li><a href="index.html"><span class="site-menu__num">1</span>Home</a></li>
+                    <li><a href="about.html"><span class="site-menu__num">2</span>About Us</a></li>
+                    <li><a href="products.html" aria-current="page"><span class="site-menu__num">3</span>Products</a></li>
+                    <li><a href="quality-services.html"><span class="site-menu__num">4</span>Quality &amp; Services</a></li>
+                    <li><a href="resources.html"><span class="site-menu__num">5</span>Resources</a></li>
+                    <li><a href="contact.html"><span class="site-menu__num">6</span>Contact Us</a></li>
+                </ol>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <svg width="0" height="0" class="h-defs" aria-hidden="true"><defs><g id="h-tear-art"><path fill="currentColor" opacity="0.45" d="M0 60L0 28L10 24L17 20L21 12L26 14L36 22L42 23L49 24L58 19L67 8L76 13L89 13L94 25L106 28L119 24L130 21L134 24L143 28L153 29L162 33L170 43L183 45L190 52L200 50L206 51L219 49L226 45L234 44L247 45L253 39L263 33L269 31L277 32L282 35L292 37L304 41L313 39L322 37L334 30L344 31L353 26L360 28L370 39L378 28L389 28L397 26L405 28L415 26L420 30L432 28L441 29L451 32L457 29L468 26L478 31L487 28L494 31L501 30L507 27L519 30L529 23L540 26L545 29L557 34L564 38L570 34L582 36L593 41L600 40L605 44L613 47L625 49L631 45L641 41L646 44L654 44L662 47L671 52L680 52L685 44L694 44L699 43L705 44L714 46L722 45L731 46L740 44L750 47L756 46L768 48L778 45L785 40L797 41L804 36L814 32L820 33L830 38L838 41L847 47L854 40L858 30L864 29L875 27L887 28L892 23L900 20L910 18L921 19L930 24L936 25L941 11L950 13L958 17L969 13L978 12L991 9L999 11L1006 13L1019 13L1029 16L1037 5L1048 17L1058 16L1065 17L1073 15L1086 17L1099 17L1103 17L1111 15L1115 22L1123 21L1127 26L1133 31L1142 33L1151 31L1156 34L1165 33L1173 37L1182 34L1187 35L1194 25L1204 16L1213 18L1217 21L1222 20L1228 23L1236 22L1246 26L1256 22L1262 25L1272 31L1276 28L1287 26L1298 32L1305 27L1311 23L1324 29L1336 27L1345 32L1356 32L1367 29L1375 34L1383 36L1390 31L1397 30L1410 33L1414 32L1419 36L1431 42L1436 46L1440 46L1440 60Z"/><path fill="currentColor" transform="translate(0 7)" d="M0 60L0 27L10 27L21 30L29 38L37 34L50 35L62 38L70 41L81 42L85 36L94 33L100 29L106 31L118 35L129 36L134 35L140 39L148 37L155 41L160 36L173 35L181 37L191 37L197 33L209 31L216 18L223 21L235 26L248 31L260 31L266 35L271 37L279 49L284 45L295 45L301 35L309 26L317 23L328 24L336 21L341 24L346 26L353 24L361 27L372 23L380 21L391 23L400 22L406 19L413 22L418 25L429 39L436 39L442 42L453 39L464 43L475 42L484 36L491 36L500 38L510 35L514 37L526 37L537 42L550 42L558 41L563 36L567 33L575 32L582 30L595 24L605 28L615 31L627 33L633 37L642 39L655 34L662 32L671 28L683 30L688 35L694 33L704 30L711 28L717 30L726 27L739 27L748 25L756 24L768 19L781 15L789 16L801 14L807 8L818 13L822 12L831 11L843 17L847 13L856 14L864 18L869 15L879 12L889 5L896 5L903 10L907 9L913 8L926 9L932 11L941 14L946 14L957 24L963 28L972 32L980 36L991 31L1000 32L1010 28L1019 32L1032 32L1043 36L1047 35L1056 37L1061 32L1071 27L1076 23L1085 28L1090 25L1100 29L1110 26L1117 26L1126 35L1137 37L1150 35L1154 36L1163 41L1170 42L1178 36L1189 36L1197 37L1207 40L1214 36L1226 40L1237 50L1242 50L1247 50L1256 44L1264 38L1277 31L1283 23L1289 26L1298 27L1302 32L1310 31L1320 32L1326 35L1338 37L1349 35L1353 32L1359 37L1365 31L1371 32L1380 27L1391 21L1400 19L1411 24L1422 24L1434 26L1440 26L1440 60Z"/></g></defs></svg>
+
+        <!-- ==================== PRODUCT HERO (same look as the Home slider, one fixed slide) ==================== -->
+        <section class="h-hero" aria-label="Dehydrated Pink Onion">
+            <div class="h-hero__stage">
+            <div class="h-slide h-slide--rose is-active">
+                <div class="h-slide__media"><picture><source media="(max-width: 767px)" srcset="images/web/hero-pink-onion-bowls-m.jpg"><img class="h-slide__img" src="images/web/hero-pink-onion-bowls.jpg" fetchpriority="high" alt="White bowls of dehydrated pink onion on a white platter" width="1600" height="672"></picture></div>
+                <div class="container h-slide__in">
+                    <p class="h-chip"><span class="h-chip__dot" aria-hidden="true"></span>Dehydrated Food Ingredients From India</p>
+                    <h1 class="h-title"><span class="h-dehyd">Dehydrated</span> <span class="h-name--pink">Pink Onion</span></h1>
+                    <p class="h-forms">Flakes / Kibbled, Chopped, Minced, Granules, Powder</p>
+                    <div class="h-slide__cta"><a class="btn btn--primary" href="#cuts">Explore Pink Onion <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a><a class="btn h-btn-glass" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', ''); return false;"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Get a Quote</a></div>
+                </div>
+            </div>
+            </div>
+            <svg class="h-tear" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><use href="#h-tear-art"/></svg>
+        </section>
+        <section class="sec" id="cuts">
+        <div class="container">
+            <div class="sec-head">
+                <p class="eyebrow">Available Formats</p>
+                <h2>Common cuts for pink onion.</h2>
+                <span class="sec-head__bar" aria-hidden="true"></span>
+            </div>
+            <div class="range-grid">
+                <article class="card product-card">
+                    <a class="media" href="pink-onion-flakes.html" tabindex="-1" aria-hidden="true"><img src="images/web/pink-onion-flakes.jpg" alt="" width="680" height="540" loading="lazy"></a>
+                    <div class="product-card__body">
+                        <h3><a href="pink-onion-flakes.html">Flakes / Kibbled</a></h3>
+                        <div class="product-card__actions"><a class="btn btn--ghost btn--sm" href="pink-onion-flakes.html">Read More<span class="sr-only"> about Dehydrated Pink Onion Flakes / Kibbled</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="btn btn--primary btn--sm" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', 'Flakes / Kibbled (8 - 15 mm)'); return false;">Get a Quote</a></div>
+                    </div>
+                </article>
+                <article class="card product-card">
+                    <a class="media" href="pink-onion-chopped.html" tabindex="-1" aria-hidden="true"><img src="images/web/pink-onion-chopped.jpg" alt="" width="680" height="540" loading="lazy"></a>
+                    <div class="product-card__body">
+                        <h3><a href="pink-onion-chopped.html">Chopped</a></h3>
+                        <div class="product-card__actions"><a class="btn btn--ghost btn--sm" href="pink-onion-chopped.html">Read More<span class="sr-only"> about Dehydrated Pink Onion Chopped</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="btn btn--primary btn--sm" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', 'Chopped (3 - 5 mm)'); return false;">Get a Quote</a></div>
+                    </div>
+                </article>
+                <article class="card product-card">
+                    <a class="media" href="pink-onion-minced.html" tabindex="-1" aria-hidden="true"><img src="images/web/pink-onion-minced.jpg" alt="" width="680" height="540" loading="lazy"></a>
+                    <div class="product-card__body">
+                        <h3><a href="pink-onion-minced.html">Minced</a></h3>
+                        <div class="product-card__actions"><a class="btn btn--ghost btn--sm" href="pink-onion-minced.html">Read More<span class="sr-only"> about Dehydrated Pink Onion Minced</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="btn btn--primary btn--sm" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', 'Minced (1 - 3 mm)'); return false;">Get a Quote</a></div>
+                    </div>
+                </article>
+                <article class="card product-card">
+                    <a class="media" href="pink-onion-granules.html" tabindex="-1" aria-hidden="true"><img src="images/web/pink-onion-granules.jpg" alt="" width="680" height="540" loading="lazy"></a>
+                    <div class="product-card__body">
+                        <h3><a href="pink-onion-granules.html">Granules</a></h3>
+                        <div class="product-card__actions"><a class="btn btn--ghost btn--sm" href="pink-onion-granules.html">Read More<span class="sr-only"> about Dehydrated Pink Onion Granules</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="btn btn--primary btn--sm" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', 'Granules (0.5 - 1 mm)'); return false;">Get a Quote</a></div>
+                    </div>
+                </article>
+                <article class="card product-card">
+                    <a class="media" href="pink-onion-powder.html" tabindex="-1" aria-hidden="true"><img src="images/web/pink-onion-powder.jpg" alt="" width="680" height="540" loading="lazy"></a>
+                    <div class="product-card__body">
+                        <h3><a href="pink-onion-powder.html">Powder</a></h3>
+                        <div class="product-card__actions"><a class="btn btn--ghost btn--sm" href="pink-onion-powder.html">Read More<span class="sr-only"> about Dehydrated Pink Onion Powder</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><a class="btn btn--primary btn--sm" href="contact.html#quote" onclick="openQuoteModal('Dehydrated Pink Onion', 'Powder (80 - 100 mesh)'); return false;">Get a Quote</a></div>
+                    </div>
+                </article>
+            </div>
+            <p class="small-note">Product images are representative. Actual appearance depends on the approved specification and selected source.</p>
+        </div>
+        </section>
+        <section class="sec sec--cream">
+        <div class="container">
+            <div class="sec-head">
+                <p class="eyebrow">Supply Options</p>
+                <h2>Formats designed around the order.</h2>
+                <span class="sec-head__bar" aria-hidden="true"></span>
+            </div>
+            <div class="grid grid--3">
+                <article class="card"><span class="icon-tile"><i class="fa-solid fa-box" aria-hidden="true"></i></span><h3>Bulk Export Packing</h3><ul class="bullets"><li>Potential 10, 20 or 25 kg packs</li><li>Food-grade inner liners</li><li>Cartons or suitable bags</li><li>Buyer marks where feasible</li></ul></article>
+                <article class="card"><span class="icon-tile"><i class="fa-solid fa-tags" aria-hidden="true"></i></span><h3>Private Label Evaluation</h3><ul class="bullets"><li>Pack and artwork review</li><li>MOQ and line feasibility</li><li>Barcode/label responsibility</li><li>Destination compliance</li></ul></article>
+                <article class="card"><span class="icon-tile"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i></span><h3>Trial &amp; Commercial Orders</h3><ul class="bullets"><li>Sample review where feasible</li><li>Trial quantity assessment</li><li>Scale-up planning</li><li>Repeat-order feedback</li></ul></article>
+            </div>
+        </div>
+        </section>
+
+
+        <!-- ==================== REGISTRATIONS & CERTIFICATIONS STRIP (above the footer on every page) ==================== -->
+        <section class="sec cert-sec" aria-labelledby="cert-strip-title">
+            <div class="container">
+                <div class="sec-head">
+                    <p class="eyebrow">Registrations &amp; Certifications</p>
+                    <h2 id="cert-strip-title">Registered and certified for food export.</h2>
+                    <span class="sec-head__bar" aria-hidden="true"></span>
+                </div>
+            </div>
+            <div class="h-marquee h-marquee--certs">
+                <div class="h-marquee__track">
+                    <ul class="h-marquee__set"><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">SHOP ACT</span></span><span class="h-cert__name">Shop Act Licence</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">UDYAM</span></span><span class="h-cert__name"><span class="notranslate">Udyam</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">GST</span></span><span class="h-cert__name"><span class="notranslate">GST</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">IEC</span></span><span class="h-cert__name">Importer-Exporter Code</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">AD CODE</span></span><span class="h-cert__name">Authorised Dealer Code</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">ICEGATE</span></span><span class="h-cert__name"><span class="notranslate">ICEGATE</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/fssai.png" alt="" width="320" height="157" loading="lazy"></span><span class="h-cert__name"><span class="notranslate">FSSAI</span> Licence</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">HACCP</span></span><span class="h-cert__name"><span class="notranslate">HACCP</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">ISO</span></span><span class="h-cert__name"><span class="notranslate">ISO</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">BRCGS</span></span><span class="h-cert__name"><span class="notranslate">BRCGS</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">HALAL</span></span><span class="h-cert__name">Halal Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">KOSHER</span></span><span class="h-cert__name">Kosher Certification</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/apeda.png" alt="" width="205" height="148" loading="lazy"></span><span class="h-cert__name"><span class="notranslate">APEDA</span> RCMC</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/spices-board.png" alt="" width="121" height="160" loading="lazy"></span><span class="h-cert__name">Spices Board Registration</span></li></ul>
+                    <ul class="h-marquee__set" aria-hidden="true"><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">SHOP ACT</span></span><span class="h-cert__name">Shop Act Licence</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">UDYAM</span></span><span class="h-cert__name"><span class="notranslate">Udyam</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">GST</span></span><span class="h-cert__name"><span class="notranslate">GST</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">IEC</span></span><span class="h-cert__name">Importer-Exporter Code</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">AD CODE</span></span><span class="h-cert__name">Authorised Dealer Code</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">ICEGATE</span></span><span class="h-cert__name"><span class="notranslate">ICEGATE</span> Registration</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/fssai.png" alt="" width="320" height="157" loading="lazy"></span><span class="h-cert__name"><span class="notranslate">FSSAI</span> Licence</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">HACCP</span></span><span class="h-cert__name"><span class="notranslate">HACCP</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">ISO</span></span><span class="h-cert__name"><span class="notranslate">ISO</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">BRCGS</span></span><span class="h-cert__name"><span class="notranslate">BRCGS</span> Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">HALAL</span></span><span class="h-cert__name">Halal Certification</span></li><li class="h-cert"><span class="h-cert__logo"><span class="h-cert__seal notranslate">KOSHER</span></span><span class="h-cert__name">Kosher Certification</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/apeda.png" alt="" width="205" height="148" loading="lazy"></span><span class="h-cert__name"><span class="notranslate">APEDA</span> RCMC</span></li><li class="h-cert"><span class="h-cert__logo"><img src="images/certificates/spices-board.png" alt="" width="121" height="160" loading="lazy"></span><span class="h-cert__name">Spices Board Registration</span></li></ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== FOOTER CALL TO ACTION (same green band as Home, on every page) ==================== -->
+    <section class="h-cta">
+        <div class="container h-cta__in">
+            <div>
+                <h2>Ready to discuss your sourcing requirement?</h2>
+            </div>
+            <div class="h-cta__btns">
+                <a class="btn btn--white" href="contact.html#quote" onclick="openQuoteModal(); return false;"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i>Get a Quote</a>
+                <a class="btn h-btn-orange" href="contact.html"><i class="fa-solid fa-headset" aria-hidden="true"></i>Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand"><img src="images/logo-mrp.webp" alt="" width="420" height="267" loading="lazy"><span class="notranslate">Mr Parth Exim</span></div>
+                    <p>Indian merchant exporter and sourcing partner for dehydrated food ingredients.</p>
+                    <div class="socials">
+                    <span class="social is-pending" data-social="linkedin" role="img" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="instagram" role="img" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="facebook" role="img" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></span>
+                    <span class="social is-pending" data-social="youtube" role="img" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span>
+                </div>
+                </div>
+                <div>
+                    <h2>Menu</h2>
+                    <ul class="footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="quality-services.html">Quality &amp; Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Products</h2>
+                    <ul class="footer-list">
+                        <li><a href="white-onion.html">Dehydrated White Onion</a></li>
+                        <li><a href="red-onion.html">Dehydrated Red Onion</a></li>
+                        <li><a href="pink-onion.html">Dehydrated Pink Onion</a></li>
+                        <li><a href="garlic.html">Dehydrated Garlic</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2>Contact</h2>
+                    <ul class="footer-list footer-contact">
+                        <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Disha Sanskruti Silk City, Railway Station,<br>Chh. Sambhajinagar, Maharashtra, India, 431001.</span></li>
+                        <li><i class="fa-solid fa-phone" aria-hidden="true"></i><a class="notranslate" href="tel:+919128992289"><span dir="ltr">+91 91289 92289</span></a></li>
+                        <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a class="notranslate" href="mailto:Admin@mrparthexim.com">Admin@mrparthexim.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 <span class="notranslate">Mr Parth Exim</span>. All rights reserved.</span>
+                <span>Availability, specification and certification are confirmed for each enquiry.</span>
+            </div>
+        </div>
+    </footer>
+
+    <a class="btn btn--accent sticky-cta" href="contact.html#quote" onclick="openQuoteModal(); return false;">Get a Quote</a>
+
+    <!-- WhatsApp Corner Button (All Pages) & Back to Top -->
+    <a class="fab fab--wa" href="https://wa.me/919128992289?text=Hello%20Mr%20Parth%20Exim%2C%20I%20would%20like%20to%20discuss%20a%20sourcing%20requirement." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+    <button type="button" id="back-to-top" class="fab fab--top" onclick="window.scrollTo(0, 0)" aria-label="Back to top" hidden><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+    <!-- ==================== GET A QUOTE MODAL (SAME FORM EVERYWHERE) ==================== -->
+    <div id="quote-modal" class="modal" hidden>
+        <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title">
+            <button type="button" class="modal__close" onclick="closeQuoteModal()" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            <h2 id="quote-modal-title">Get a Quote</h2>
+            <form class="qform" onsubmit="handleQuoteSubmit(event)">
+                <div class="field">
+                    <label for="modal-name">Name <span>*</span></label>
+                    <input id="modal-name" name="name" type="text" required autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="modal-company">Company Name <span>*</span></label>
+                    <input id="modal-company" name="company" type="text" required autocomplete="organization">
+                </div>
+                <div class="field">
+                    <label for="modal-email">Email <span>*</span></label>
+                    <input id="modal-email" name="email" type="email" required autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="modal-phone">Phone / WhatsApp <span>*</span></label>
+                    <div class="phone-input">
+                        <div class="phone-input__code">
+                            <span class="phone-input__shown notranslate" aria-hidden="true">+91</span>
+                            <select id="modal-phone-code" class="phone-input__select" name="phone_code" aria-label="Country code" autocomplete="tel-country-code" data-dial-codes><option value="+91" data-country="India" selected>India (+91)</option></select>
+                        </div>
+                        <input id="modal-phone" name="phone" type="tel" required autocomplete="tel-national" inputmode="tel">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="modal-product">Product <span>*</span></label>
+                    <select id="modal-product" name="product" required>
+                        <option value="">Select</option>
+                        <option value="Dehydrated White Onion">Dehydrated White Onion</option>
+                        <option value="Dehydrated Red Onion">Dehydrated Red Onion</option>
+                        <option value="Dehydrated Pink Onion">Dehydrated Pink Onion</option>
+                        <option value="Dehydrated Garlic">Dehydrated Garlic</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="modal-specification">Product Specification</label>
+                    <input id="modal-specification" name="specification" type="text" placeholder="e.g. form, grade or mesh, packing">
+                </div>
+                <div class="field">
+                    <label for="modal-quantity">Quantity <span>*</span></label>
+                    <input id="modal-quantity" name="quantity" type="text" required placeholder="e.g. 1 MT trial">
+                </div>
+                <div class="field">
+                    <label for="modal-country">Country <span>*</span></label>
+                    <input id="modal-country" name="country" type="text" required autocomplete="country-name">
+                </div>
+                <div class="field field--full">
+                    <label for="modal-message">Your Message</label>
+                    <textarea id="modal-message" name="message"></textarea>
+                </div>
+                <div class="qform__actions">
+                    <button type="submit" class="btn btn--primary"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Send on Mail &amp; WhatsApp</button>
+                    <p class="qform__note">Submission does not constitute order acceptance, price confirmation or product reservation.</p>
+                </div>
+                <div class="form-status" role="status" hidden>
+                    <p class="form-status__text"></p>
+                    <div class="form-status__links">
+                        <a class="btn btn--primary btn--sm" data-link="whatsapp" href="https://wa.me/919128992289" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i>Open WhatsApp</a>
+                        <a class="btn btn--ghost btn--sm" data-link="email" href="mailto:Admin@mrparthexim.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>Open Email</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast-notification" class="toast" role="status" hidden></div>
+
+    <script src="js/site-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+</body>
+</html>
